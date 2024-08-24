@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1 class="my-4">Lista de Tarefas</h1>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Título</th>
+            <th>Categoria</th>
+            <th>Completada</th>
+            <th>Data de Vencimento</th>
+            <th>Clima</th>
+            <th>Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for task in object_list %}
+        <tr>
+            <td>{{ task.title }}</td>
+            <td>{{ task.category.name }}</td>
+            <td>{{ task.completed }}</td>
+            <td>{{ task.due_date }}</td>
+            <td>
+                {% if task.weather_info %}
+                    {{ task.weather_info.temperature }}°C, {{ task.weather_info.description }}
+                {% else %}
+                    N/A
+                {% endif %}
+            </td>
+            <td>
+                <a href="{% url 'task-update' task.pk %}" class="btn btn-sm btn-primary">Editar</a>
+                <a href="{% url 'task-delete' task.pk %}" class="btn btn-sm btn-danger">Deletar</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<a href="{% url 'task-create' %}" class="btn btn-success">Adicionar Tarefa</a>
+{% endblock %}

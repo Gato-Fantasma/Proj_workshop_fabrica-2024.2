@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Categorias</title>
+</head>
+<body>
+    <h1>Lista de Categorias</h1>
+    <ul>
+        {% for category in object_list %}
+            <li>{{ category.name }} - <a href="{% url 'category-update' category.pk %}">Editar</a> | <a href="{% url 'category-delete' category.pk %}">Deletar</a></li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'category-create' %}">Adicionar Categoria</a>
+</body>
+</html>

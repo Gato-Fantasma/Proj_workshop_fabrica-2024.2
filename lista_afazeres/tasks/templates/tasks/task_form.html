@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ view.title }} Tarefa{% endblock %}
+
+{% block content %}
+<h1>{{ view.title }} Tarefa</h1>
+<form method="post">
+    {% csrf_token %}
+    <div class="form-group">
+        <label for="title">Título</label>
+        {{ form.title }}
+    </div>
+    <div class="form-group">
+        <label for="description">Descrição</label>
+        {{ form.description }}
+    </div>
+    <div class="form-group">
+        <label for="completed">Completada</label>
+        {{ form.completed }}
+    </div>
+    <div class="form-group">
+        <label for="due_date">Data de Vencimento</label>
+        {{ form.due_date }}
+    </div>
+    <div class="form-group">
+        <label for="category">Categoria</label>
+        {{ form.category }}
+    </div>
+    <div class="
